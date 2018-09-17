@@ -2,7 +2,7 @@
 document.addEventListener("deviceready",onDeviceReadyNot,false);
 
 function onDeviceReadyNot(){
-	var push = PushNotification.init({ "android": {"senderID": "325843566220"}});
+	var push = PushNotification.init({ "android": {"senderID": "****"}});
 
 
 	push.on('notification', function(data) {
