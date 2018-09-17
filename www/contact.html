@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+</head>
+<body>
+<div class="loader"></div>
+    <div id="app">
+        <div class="view view-main view-init" data-url="/">
+            <div class="page" data-name="index">
+                <div class="navbar two-action no-hairline">
+                    <div class="navbar-inner">
+                        <div class="left"><a id="back" href="#" class="back link"> <i class="fa fa-angle-left"></i><span>Back</span></a></div>
+                        <div class="sliding title">Contact</div>
+                    </div>
+                </div>
+				
+                <div class="page-content inn-page">
+                    <div class="block">
+                      <div class="list no-hairlines media-list inv-list">
+						<ul class="d-bg">
+							</ul>
+							
+						</div> 
+						<div class="row">
+                                <div class="col-100 tablet-100">
+									<a href="/projects/" class="">
+										<div class="dash-widget">
+                                            <div><img src="logo.png" style="width:22%"></div>
+											<div class="dash-widget-info" style="text-align:left;">
+												<h4>Welcome to Wegentum</h4><br>
+												<p>Wegentum Securities Pvt. Ltd</p>
+												<p>Office Space 2A 3rd Floor Rathyatra Crossing Varanasi 221010</p><br>
+												<p>Email :- Wecare@Wegentum.com</p><br>
+                                                <p>Contact :- 7522898884</p><br>
+											</div>
+										</div>
+									</a>
+                                </div>
+                               
+                            </div>
+					</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+
+	<script src="assets/js/api_conf.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#back").click(function(){
+	            window.location.href='index.html';
+	        });
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<link href="applock/patternLock.css"  rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    var prev_secret=localStorage.getItem("secret");
+    if(!prev_secret){
+        window.location.href = 'index.html';
+    }
+</script>
+</head>
+
+<body>
+    <div id="container" class="container" style="background-image: url('applock/lock.jpg');background-repeat: no-repeat;background-size: 100% 100%;">
+        <div class="mhn-lock-wrap">
+            <div class="mhn-lock-title" style="position: absolute;
+        top: 15%;
+        font-size: 25px;
+        left: 15%;
+        color: #fff;">
+                Draw a pattern to unlock
+            </div> 
+            <div class="mhn-lock-title-wrong" style="position: absolute;
+        top: 15%;   
+        font-size: 25px;
+        left: 15%;
+        color: crimson;display:none;">
+                Opps! pattern is not correct
+            </div> 
+            <div class="mhn-lock-title-right" style="position: absolute;
+        top: 15%;
+        font-size: 25px;
+        left: 15%;
+        color: greenyellow;display:none;">
+                Correct pattern! logging in... 
+            </div>            
+        </div>
+        <div id="patternContainer" style="width:100% !important;height:100% !important;    top: 20%;"></div>    
+        <div>
+            <a href="logout.html" style="position: absolute;bottom: 2%;font-size: 25px; color: #fff;left: 15%;    text-decoration: underline;">Forgot?</a>
+        </div>
+    </div>
+</body>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="applock/patternLock.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function(){        
+        var page_height=$(window).height();
+        var page_width=$(window).width();
+        var final_width=((page_width*100)/100);
+        var final_height=((page_height*100)/100);
+        $("#container").css("width",final_width);
+        $("#container").css("height",final_height);
+
+        var lockpattern=localStorage.getItem("lockpattern");
+        var lock = new PatternLock("#patternContainer",{allowRepeat : true,margin:40,radius:20, onDraw:function(pattern){
+            lock.reset();
+            lock.checkForPattern(lockpattern,function(){
+                $(".mhn-lock-title").hide();
+                $(".mhn-lock-title-wrong").hide();
+                $(".mhn-lock-title-right").show();  
+                //alert("You unlocked your app");
+                window.location="dashboard.html";
+            },function(){
+                //alert("Pattern is not correct");
+                $(".mhn-lock-title").hide();
+                $(".mhn-lock-title-right").hide();
+                $(".mhn-lock-title-wrong").show();    
+            });
+        }});
+    });
+</script>
+</html>

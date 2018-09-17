@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="ios device-pixel-ratio-1 device-desktop support-position-sticky">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <style type="text/css">
+        #btn-login:hover {
+            background: linear-gradient(to bottom, #135479 0%,#33a4ee 100%);
+        }
+		
+		#partition
+		{
+			padding-left: 15px;
+			letter-spacing: 42px;
+			border: 0;
+			background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+			background-position: bottom;
+			background-size: 50px 1px;
+			background-repeat: repeat-x;
+			background-position-x: 35px;
+			width: 220px;
+			color:white;
+		}
+		
+		#divInner{
+		  left: 0;
+		  position: sticky;
+		}
+
+		#divOuter{
+		  width:190px; 
+		  overflow:hidden
+		}
+	</style>
+	<script type="text/javascript">
+		var prev_secret=localStorage.getItem("secret");
+		if(!prev_secret){
+			window.location.href = 'index.html';
+		}
+	</script>
+</head>
+
+<body>
+    <div id="app" class="framework7-root">
+<div class="view view-main view-init" data-url="/">
+           <div class="page no-navbar no-toolbar no-swipeback login-page" data-name="login">
+	<div class="page-content landing-page">
+	<img src="assets/img/lp.jpg" alt="">
+		<div class="account-page">
+			<div class="account-inner">
+				<div class="account-center">
+					<div class="account-content p-20">
+						<div class="account-title">
+							<h2>Welcome to </h2>
+							<h1>Wegentum <span class="white">Sight</span></h1>						
+						</div>
+						<center>
+							<div class="account-form">
+							<h3>Enter <span class="white">Passcode</span></h3>
+								<form id="login_form">
+								<div id="divOuter">
+									<div id="divInner">
+										<input id="partition" type="number" maxlength="4" />
+									</div>
+								</div>								
+								</form>
+							</div>
+							<div class="input-list btn-submit">
+								<input type="button" value="Login" id="btn-login">
+								<center><a id="forgot"><h3><span class="white">Forgot?</span></h3></a></center>
+							</div>
+						</center>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/Chart.bundle.js"></script>
+    <script type="text/javascript" src="assets/js/routes.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+	<script>
+	var obj = document.getElementById('partition');
+	//obj.addEventListener("keydown", stopCarret); 
+	//obj.addEventListener("keyup", stopCarret); 
+
+	function stopCarret() {
+		if (obj.value.length > 3){
+			setCaretPosition(obj, 3);
+		}
+	}
+
+	function setCaretPosition(elem, caretPos) {
+		if(elem != null) {
+			if(elem.createTextRange) {
+				var range = elem.createTextRange();
+				range.move('character', caretPos);
+				range.select();
+			}
+			else {
+				if(elem.selectionStart) {
+					elem.focus();
+					elem.setSelectionRange(caretPos, caretPos);
+				}
+				else
+					elem.focus();
+			}
+		}
+	}
+
+	$("#btn-login").click(function() {
+		var value = document.getElementById('partition').value;
+		var com=localStorage.getItem("lockpattern");
+		if(com==value)
+		{ 
+			window.location="dashboard.html";
+		}
+		else
+		{
+			alert("Incorrect Passcode");
+			$("#partition").val('');
+			return false;
+		}
+	});
+	
+	$("#forgot").click(function() {
+		window.location="logout.html";
+	});
+	</script>
+</body></html>
+	

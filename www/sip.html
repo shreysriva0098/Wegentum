@@ -1,0 +1,250 @@
+<html class="ios device-pixel-ratio-1 device-desktop support-position-sticky"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>DHR - HTML Mobile Template</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/slider.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!--<style>
+		.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://www.gte.travel/images/upload//Loading/Preloader_2.gif?r=13/09/2017') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+	</style>-->
+    <style type="text/css">
+        .ios .list ul {
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<!--<div class="loader" style="dispaly:none;"></div>-->
+    <div id="app" >     
+
+    <div class="view view-main view-init" data-url="/">
+    
+<div class="page" data-name="add-client">
+
+    <div class="navbar">
+		<div class="navbar-inner">
+			<div class="left"><a id="back" href="#" class="back link"> <i class="fa fa-angle-left"></i><span>Back</span></a></div>
+			<div class="title">SIP Calculator</div>
+		</div>
+	</div>
+        <div class="popover main-menu">
+            <div class="popover-angle"></div>
+            <div class="popover-inner">
+                <div class="list">
+                    <ul>
+                        <li><a href="#" id="name" class="list-button item-link popover-close">Name</a></li>
+						<li><a href="#" id="email" class="list-button item-link popover-close">Email</a></li>
+						<li><a href="#" id="mobile" class="list-button item-link popover-close">Mobile</a></li>
+						<li><a href="#" id="password_change" class="list-button item-link popover-close">Password Change</a></li>
+						<li><a href="#" id="logout" class="list-button item-link popover-close">Logout</a></li>
+						<li><a href="#" id="support" class="list-button item-link popover-close">Support</a></li>
+						<li><a href="#" id="query" class="list-button item-link popover-close">Query</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <div class="page-content">
+	<form id="demo-form">
+        <div class="list no-hairlines custom-form">
+            <ul>
+                <li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">How much is your SIP amount?</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="principal" id="principal">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+				<li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">For how many months will you continue the SIP?</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="months_future" id="months_future">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+				<!--<li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">How many months ago did you start the SIP?</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="months_past" id="months_past">
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>-->
+				<li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">What rate of return do you expect p.a.?</div>
+                        <div class="item-input-wrap">
+                            <div class="slidecontainer">
+							  <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+							</div>
+                        </div>
+                    </div>
+					<div class="item-inner" style="width:40%">
+                        <div class="item-title item-label"></div>
+                        <div class="item-input-wrap">
+                            <div class="slidecontainer">
+							  <input type="text" name="rate" id="rate">
+							</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input">
+					<div class="item-inner">
+						<div class="item-input-wrap m-t-10">
+							<button class="button button-big button-purple" id="calculate" type="button">Calculate</button>
+						</div>
+					</div>
+                </li>
+				<li class="item-content item-input">
+                    <div class="item-inner">
+                        <div class="item-title item-label">The future value of your ongoing SIP will be</div>
+                        <div class="item-input-wrap">
+                            <input type="text" name="fv" id="fv" readonly>
+                            <span class="input-clear-button"></span>
+                        </div>
+                    </div>
+                </li>
+				<li class="item-content item-input">
+					 <div class="item-inner">
+						<p>*assumes investments are made at the beginning of the month</p>
+					</div>
+				</li>
+            </ul>
+        </div></form>
+    </div>
+</div>
+
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$("#name").html(localStorage.getItem("txt_name"));
+        $("#email").html(localStorage.getItem("txt_email"));
+        $("#mobile").html(localStorage.getItem("txt_phone"));
+        $("#back").click(function(){
+            window.location.href='dashboard.html';
+        });
+	});
+	$("#send").click(function() {
+		
+	if ($("#old_password").val() == "") 
+	{
+        $("#old_password").focus();
+		document.getElementById("old_password").style.border="1px solid red";
+        return false;
+    }
+	else 
+	{
+		document.getElementById("old_password").style.border="";
+    }
+	
+	if ($("#new_password").val() == "") 
+	{
+        $("#new_password").focus();
+		document.getElementById("new_password").style.border="1px solid red";
+        return false;
+    }
+	else 
+	{
+		document.getElementById("new_password").style.border="";
+    }
+	
+	if ($("#confirm_password").val() == "") 
+	{
+        $("#confirm_password").focus();
+		document.getElementById("confirm_password").style.border="1px solid red";
+        return false;
+    }
+	else 
+	{
+		document.getElementById("confirm_password").style.border="";
+    }
+	
+	if($("#new_password").val()!=$("#confirm_password").val())
+    {
+       alert("New and confirm password Mismatch");
+    }
+	var auth_key=localStorage.getItem("txt_auth_key");
+	var client_id=localStorage.getItem("int_unique_id");
+						$.ajax({
+                            type: "POST",
+                            url: apiUrl+"Apis/change_existing_password",
+                            data:
+							{
+								'old_password':$("#old_password").val(),
+								'new_password':$("#new_password").val(),
+								'auth_key':auth_key,
+								'client_id':client_id
+							},
+                            success: function(result) {
+								//$(".loader").fadeOut("slow");
+                                var obj = $.parseJSON(result);
+                                if(obj.code=='200')
+                                {
+                                    alert("Password Changed Successfully!");
+									localStorage.clear();
+                                    window.location.href = 'main.html'; 									
+                                }
+                                else if(obj.code=='402')
+                                {
+                                    alert("Old Password Is Incorrect");
+                                }
+                            },
+                            error: function(result) {
+                                //$(".loader").fadeOut("slow");
+                                console.log("Some Error Occured");
+                            }
+                        });
+						 });
+</script>
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("rate");
+output.value = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.value = this.value;
+}
+
+$(document).ready(function(){
+	$("#calculate").click(function(){
+        var principal=parseInt($("#principal").val());
+		var n=parseInt($("#months_future").val());
+		var rate=parseInt($("#rate").val());
+		var i=((rate/100)/12);
+		var fv= parseInt(principal * (((Math.pow((1 + i),n)) - 1) / i) * (1 + i));
+		$("#fv").val(fv);
+    });
+});
+</script>
+</body></html>

@@ -1,0 +1,1156 @@
+
+<html class="ios device-pixel-ratio-1 device-desktop support-position-sticky"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<style>
+		.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://www.gte.travel/images/upload//Loading/Preloader_2.gif?r=13/09/2017') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+	</style>
+    <style type="text/css">
+        .ios .list .item-inner {
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="loader"></div>
+    <div id="app" class="framework7-root">
+        <div class="statusbar"></div>
+
+        <div class="panel-backdrop"></div><div class="panel panel-left panel-reveal">
+            <div class="block">
+                <div class="side-menu" id="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a class="panel-close" href="/">
+								Dashboard
+							</a>
+                        </li>
+						<li class="submenu">
+                            <a href="#"><span>Employees</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a class="panel-close" href="/employees/"> All Employees</a></li>
+                                <li><a class="panel-close" href="/holidays/"> Holidays </a></li>
+                                <li><a class="panel-close" href="/leaves/"> Leave Requests </a></li>
+                                <li><a class="panel-close" href="/departments/"> Departments </a></li>
+                                <li><a class="panel-close" href="/designations/"> Designations </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/clients/">
+								Clients
+                            </a>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/projects/">
+								Projects
+                            </a>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/tasks/">
+								Tasks
+                            </a>
+                        </li>
+						<li class="submenu">
+                            <a href="#"><span>Accounts</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a class="panel-close" href="/estimates/"> Estimates</a></li>
+                                <li><a class="panel-close" href="/invoices/"> Invoices </a></li>
+                                <li><a class="panel-close" href="/payments/"> Payments </a></li>
+                                <li><a class="panel-close" href="/taxes/"> Taxes </a></li>
+                            </ul>
+                        </li>
+						<li class="submenu">
+                            <a href="#"><span>Payroll</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a class="panel-close" href="/salary/"> Employee Salary </a></li>
+                                <li><a class="panel-close" href="/salary-view/"> Payslip </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/email/">
+								Email
+                            </a>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/chat/">
+								Chat
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><span>Calls</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a class="panel-close" href="/voice-call/"> Voice Call </a></li>
+                                <li><a class="panel-close" href="/video-call/"> Video Call </a></li>
+                                <li><a class="panel-close" href="/incoming-call/"> Incoming Call </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="panel-close" href="/users/">
+								Users
+                            </a>
+                        </li>
+						<li>
+                            <a class="panel-close" href="/settings/">
+								Settings
+                            </a>
+                        </li>
+						<li class="submenu">
+                            <a href="#"><span>Pages</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li><a class="panel-close" href="/login/"> Login </a></li>
+                                <li><a class="panel-close" href="/register/"> Register </a></li>
+                                <li><a class="panel-close" href="/forgot-password/"> Forgot Password </a></li>
+                                <li><a class="panel-close" href="/profile/"> Profile </a></li>
+                                <li><a class="panel-close" href="/walkthrough/"> Walkthrough </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="view view-main view-init" data-url="/">
+        
+<div class="page" data-name="profile">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a id="back" class="back link"> <i class="fa fa-angle-left"></i><span>Back</span></a>
+            </div>
+            <div class="title">Profile</div>
+            <!--<div class="right">
+                <a href="#" class="link icon-only popup-open" data-popup=".edit-popup">
+                    <i class="f7-icons">compose</i>
+                </a>
+            </div>-->
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="profile-header" style="background: #6a6f8c;">
+            <div class="pro-img-box">
+                <img alt="" src="" id="profileimg">
+                <!--<div class="pro-img-upload">
+                    <input type="file" class="upload" id="image" name="image" onchange="readURL(this);">
+                </div>-->
+            </div>
+            <div class="pro-user-det">
+                <div class="profile-name" id="profile_name"></div>
+            </div>
+        </div>
+        <div class="toolbar tabbar toolbar-border">
+            <div class="toolbar-inner">
+                <a href="#pro_basic" class="tab-link tab-link-active">Basic</a>
+                <a href="#pro_address" class="tab-link">Address</a>
+				<a href="#pro_bank" class="tab-link">Bank</a>
+                <!--<a href="#pro_uploads" class="tab-link">Uploads</a>
+				<a href="#pro_nominee" class="tab-link">Nominee</a>
+				<a href="#pro_holder" class="tab-link">Holder</a>
+				<a href="#pro_other" class="tab-link">Other</a>
+				<a href="#pro_segment" class="tab-link">Segment Registered</a>-->
+            </div>
+        </div>
+        <!-- Tabs -->
+        <div class="tabs profile-tabs">
+		
+            <div class="tab tab-active" id="pro_basic">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">                                    
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Name Of Applicant</div>
+                                    <div class="item-after" id="txt_name"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Date Of Birth</div>
+                                    <div class="item-after" id="dt_dob"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Gender</div>
+                                    <div class="item-after" id="txt_gender"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Marrital Status</div>
+                                    <div class="item-after" id="txt_marrital_status"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Aadhaar</div>
+                                    <div class="item-after" id="txt_aadhaar"></div>
+                                </div>
+                            </div>
+                        </li>
+						 <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">PAN</div>
+                                    <div class="item-after" id="txt_pan"></div>
+                                </div>
+                            </div>
+                        </li>
+						 <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Phone(O)</div>
+                                    <div class="item-after" id="txt_phone_o"></div>
+                                </div>
+                            </div>
+                        </li>
+						 <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Phone(R)</div>
+                                    <div class="item-after" id="txt_phone_r"></div>
+                                </div>
+                            </div>
+                        </li>
+						 <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Email</div>
+                                    <div class="item-after" id="txt_email"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Fax No.</div>
+                                    <div class="item-after" id="txt_fax"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Place Of Birth</div>
+                                    <div class="item-after" id="txt_birth_place"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Country Of Birth</div>
+                                    <div class="item-after" id="txt_country_of_birth"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Mobile</div>
+                                    <div class="item-after" id="txt_mobile"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Name As Per PAN Card</div>
+                                    <div class="item-after" id="txt_name_ap_pan"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Nationality</div>
+                                    <div class="item-after" id="txt_nationality"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+			
+           <div class="tab" id="pro_address">
+                <div class="list">
+                    <div class="block block-strong address-block">
+                        <p><strong>CORRESPONDENCE</strong></p>
+                        <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Address</div>
+                                    <div class="item-after" id="txt_address"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">STD Code</div>
+                                    <div class="item-after" id="txt_std"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">State</div>
+                                    <div class="item-after" id="txt_state"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">City</div>
+                                    <div class="item-after" id="txt_city"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Pin Code</div>
+                                    <div class="item-after" id="txt_pincode"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+					<div class="block block-strong address-block">
+                        <p><strong>PERMANENT</strong></p>
+                        <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Address</div>
+                                    <div class="item-after" id="txt_permanent_address"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">STD Code</div>
+                                    <div class="item-after" id="txt_permanent_std"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">State</div>
+                                    <div class="item-after" id="txt_permanent_state"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">City</div>
+                                    <div class="item-after" id="txt_permanent_city"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Pin Code</div>
+                                    <div class="item-after" id="txt_permanent_pincode"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="tab" id="pro_bank">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Bank Name</div>
+                                    <div class="item-after" id="txt_bank_name"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">MICR Code</div>
+                                    <div class="item-after" id="txt_bank_micr_code"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Branch</div>
+                                    <div class="item-after" id="txt_bank_branch"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">IFSC Code</div>
+                                    <div class="item-after" id="txt_bank_ifsc_code"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">City</div>
+                                    <div class="item-after" id="txt_bank_city"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Account Number</div>
+                                    <div class="item-after" id="txt_bank_acc_no"></div>
+                                </div>
+                            </div>
+                        </li>
+						<li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Account Type</div>
+                                    <div class="item-after" id="txt_bank_acc_type"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+			
+            <div class="tab" id="pro_uploads">
+                <div class="block block-strong">
+                    <div class="experience-box">
+                        <ul class="experience-list">
+                            <li>
+                                <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                </div>
+                                <div class="experience-content">
+                                    <div class="timeline-content">
+                                        <span class="name">Web Designer at Zen Corporation</span>
+                                        <span class="time">Jan 2013 - Present (5 years 2 months)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                </div>
+                                <div class="experience-content">
+                                    <div class="timeline-content">
+                                        <span class="name">Web Designer at Ron-tech</span>
+                                        <span class="time">Jan 2013 - Present (5 years 2 months)</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="experience-user">
+                                    <div class="before-circle"></div>
+                                </div>
+                                <div class="experience-content">
+                                    <div class="timeline-content">
+                                        <span class="name">Web Designer at Dalt Technology</span>
+                                        <span class="time">Jan 2013 - Present (5 years 2 months)</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			<div class="tab" id="pro_nominee">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Employee ID</div>
+                                    <div class="item-after">FT-0001</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Phone</div>
+                                    <div class="item-after">9876543210</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Email</div>
+                                    <div class="item-after">johndoe@example.com</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Birthday</div>
+                                    <div class="item-after">24th July</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Gender</div>
+                                    <div class="item-after">Male</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="block block-strong address-block">
+                        <p><strong>Address</strong></p>
+                        <p>1861 Bayonne Ave, Manchester Township, NJ, 08759</p>
+                    </div>
+					<div class="block skills-block">
+                        <p><strong>Skills</strong></p>
+                        <div class="skills">
+                            <span>IOS</span>
+                            <span>Android</span>
+                            <span>Html</span>
+                            <span>CSS</span>
+                            <span>Codignitor</span>
+                            <span>Php</span>
+                            <span>Javascript</span>
+                            <span>Wordpress</span>
+                            <span>Jquery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="tab" id="pro_holder">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Employee ID</div>
+                                    <div class="item-after">FT-0001</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Phone</div>
+                                    <div class="item-after">9876543210</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Email</div>
+                                    <div class="item-after">johndoe@example.com</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Birthday</div>
+                                    <div class="item-after">24th July</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Gender</div>
+                                    <div class="item-after">Male</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="block block-strong address-block">
+                        <p><strong>Address</strong></p>
+                        <p>1861 Bayonne Ave, Manchester Township, NJ, 08759</p>
+                    </div>
+					<div class="block skills-block">
+                        <p><strong>Skills</strong></p>
+                        <div class="skills">
+                            <span>IOS</span>
+                            <span>Android</span>
+                            <span>Html</span>
+                            <span>CSS</span>
+                            <span>Codignitor</span>
+                            <span>Php</span>
+                            <span>Javascript</span>
+                            <span>Wordpress</span>
+                            <span>Jquery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="tab" id="pro_other">
+                <div class="list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Status</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Mode Of Holding</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Occupation</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Annual Income</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="block block-strong address-block">
+                        <p><strong>Address</strong></p>
+                        <p>1861 Bayonne Ave, Manchester Township, NJ, 08759</p>
+                    </div>
+					<div class="block skills-block">
+                        <p><strong>Skills</strong></p>
+                        <div class="skills">
+                            <span>IOS</span>
+                            <span>Android</span>
+                            <span>Html</span>
+                            <span>CSS</span>
+                            <span>Codignitor</span>
+                            <span>Php</span>
+                            <span>Javascript</span>
+                            <span>Wordpress</span>
+                            <span>Jquery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="tab" id="pro_segment">
+                <div class="list">                        
+					<div class="block skills-block">
+                        <p><strong>Skills</strong></p>
+                        <div class="skills">
+                            <span>IOS</span>
+                            <span>Android</span>
+                            <span>Html</span>
+                            <span>CSS</span>
+                            <span>Codignitor</span>
+                            <span>Php</span>
+                            <span>Javascript</span>
+                            <span>Wordpress</span>
+                            <span>Jquery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup edit-popup">
+            <div class="view popup-view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left"><a href="#" class="link popup-close"><i class="fa fa-close"></i> <span>Close</span></a></div>
+                            <div class="title">Edit Profile</div>
+                            <div class="right"></div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="tabs">
+                            <div class="tab tab-active" id="basic_informations">
+                                <div class="list no-hairlines custom-form">
+                                    <h4 class="profile-title">Basic Informations</h4>
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">First Name</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Last Name</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Birth Date</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Gender</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="row">
+														<div class="col-100">
+															<a class="tab-link button button-big button-purple" href="#contact_informations">Next</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="tab" id="contact_informations">
+                                <div class="list no-hairlines custom-form">
+                                    <h4 class="profile-title">Contact Informations</h4>
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Address</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">State</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Country</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Pincode</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Phone Number</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Address</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="row">
+														<div class="col-50">
+															<a class="tab-link button button-big button-red" href="#basic_informations">Back</a>
+														</div>
+														<div class="col-50">
+															<a class="tab-link button button-big button-purple" href="#education_informations">Next</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab" id="education_informations">
+                                <div class="list no-hairlines custom-form">
+                                    <h4 class="profile-title">Education Informations</h4>
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Institution</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Subject</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Starting Date</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Complete Date</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Degree</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Grade</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="add-more">
+														<a class="add-more-btn" href="#"><i class="fa fa-plus"></i> Add More Institute</a>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="row">
+														<div class="col-50">
+															<a class="tab-link button button-big button-red" href="#contact_informations">Back</a>
+														</div>
+														<div class="col-50">
+															<a class="tab-link button button-big button-purple" href="#exp_informations">Next</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="tab" id="exp_informations">
+                                <div class="list no-hairlines custom-form">
+                                    <h4 class="profile-title">Experience Informations</h4>
+                                    <ul>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Company Name</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Location</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Job Position</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Period From</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="item-content item-input">
+                                            <div class="item-inner">
+                                                <div class="item-title item-label">Period To</div>
+                                                <div class="item-input-wrap">
+                                                    <input type="text">
+                                                    <span class="input-clear-button"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="add-more">
+														<a class="add-more-btn" href="#"><i class="fa fa-plus"></i> Add More Experience</a>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="item-content item-input">
+											<div class="item-inner">
+												<div class="item-input-wrap m-t-10">
+													<div class="row">
+														<div class="col-50">
+															<a class="tab-link button button-big button-red" href="#education_informations">Back</a>
+														</div>
+														<div class="col-50">
+															<a class="tab-link button button-big button-purple popup-close" href="">Send</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/Chart.bundle.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#back").click(function(){
+            window.location.href='dashboard.html';
+        });
+	});
+			 var client_id=localStorage.getItem("int_unique_id");
+			  var auth_key=localStorage.getItem("txt_auth_key");
+			  $.ajax({
+			  type:'POST',
+			  url: apiUrl+"Apis/getProfile",
+			  data:{
+                      client_id:client_id,
+					  auth_key:auth_key
+				    },
+              success:function(data)
+              {
+			  $(".loader").fadeOut("slow");
+			  var obj1=JSON.parse(data);
+			  $("#txt_name").html(obj1.data[0].txt_name);
+			  $("#profile_name").html(obj1.data[0].txt_name);
+			  $("#dt_dob").html(obj1.data[0].dt_dob);
+			  $("#txt_gender").html(obj1.data[0].txt_gender);
+			  if(obj1.data[0].txt_marrital_status==1){$("#txt_marrital_status").html('Married');}
+			  if(obj1.data[0].txt_marrital_status==2){$("#txt_marrital_status").html('Unmarried ');}
+			  if(obj1.data[0].txt_marrital_status==3){$("#txt_marrital_status").html('Others');}
+			  $("#txt_aadhaar").html(obj1.data[0].txt_aadhaar);
+			  $("#txt_pan").html(obj1.data[0].txt_pan);
+			  $("#txt_phone_o").html(obj1.data[0].txt_phone_o);
+			  $("#txt_phone_r").html(obj1.data[0].txt_phone_r);
+			  $("#txt_email").html(obj1.data[0].txt_email);
+			  $("#txt_fax").html(obj1.data[0].txt_fax);
+			  $("#txt_birth_place").html(obj1.data[0].txt_birth_place);
+			  $("#txt_country_of_birth").html(obj1.data[0].txt_country_of_birth);
+			  $("#txt_mobile").html(obj1.data[0].txt_mobile);
+			  $("#txt_name_ap_pan").html(obj1.data[0].txt_name_ap_pan);
+			  $("#txt_nationality").html(obj1.data[0].txt_nationality);
+			  $("#txt_address").html(obj1.data[0].txt_address);
+			  $("#txt_std").html(obj1.data[0].txt_std);
+			  $("#txt_state").html(obj1.data[0].txt_state);
+			  $("#txt_city").html(obj1.data[0].txt_city);
+			  $("#txt_pincode").html(obj1.data[0].txt_pincode);
+			  $("#txt_permanent_address").html(obj1.data[0].txt_permanent_address);
+			  $("#txt_permanent_std").html(obj1.data[0].txt_permanent_std);
+			  $("#txt_permanent_state").html(obj1.data[0].txt_permanent_state);
+			  $("#txt_permanent_city").html(obj1.data[0].txt_permanent_city);
+			  $("#txt_permanent_pincode").html(obj1.data[0].txt_permanent_pincode);
+			  
+			  $("#txt_bank_name").html(obj1.data[0].txt_bank_name);
+			  $("#txt_bank_micr_code").html(obj1.data[0].txt_bank_micr_code);
+			  $("#txt_bank_branch").html(obj1.data[0].txt_bank_branch);
+			  $("#txt_bank_ifsc_code").html(obj1.data[0].txt_bank_ifsc_code);
+			  $("#txt_bank_city").html(obj1.data[0].txt_bank_city);
+			  $("#txt_bank_acc_no").html(obj1.data[0].txt_bank_acc_no);
+			  if(obj1.data[0].txt_bank_acc_type==1){$("#txt_bank_acc_type").html('Savings');}
+			  if(obj1.data[0].txt_bank_acc_type==2){$("#txt_bank_acc_type").html('Current');}
+			  if(obj1.data[1]=='null' || obj1.data[1]==null || obj1.data[1]=='' || obj1.data[1]==' ')
+			  {
+				$("#profileimg").attr("src","assets/img/user.jpg");
+			  }
+			  else
+			  {
+				$("#profileimg").attr("src",document_path+obj1.data[1].txt_uploads);
+			  }
+              },
+			  error: function(result) {
+			   		$(".loader").fadeOut("slow");
+                    console.log("Some Error Occured");
+                  }
+			  });
+			  
+			 $("#btn_submit").click(function() {
+						var id=localStorage.getItem("int_id");
+						var auth_key=localStorage.getItem("auth_key");
+						$("#hiddenfield").val(id);
+						$("#hiddenfield1").val(auth_key);
+                        $.ajax({
+                            type: "POST",
+                            url: apiUrl+"admin/update_profile?id="+id,
+                            data: $('#demo-form2').serialize(),
+                            //datatype: "json",
+                            crossDomain: true,
+                            success: function(result) {
+							//alert(result);
+                                var obj = $.parseJSON(result);
+                                $("#form_error").html("");
+                                if (obj.code==200)
+                                {
+                                    alert("Profile Updated!");            
+                                    window.location.href = 'profile.html';                                                        
+                                }
+                                else
+                                {
+                                    alert(result);
+                                }
+                            },
+                            error: function(result) {
+                                 $(".fade").hide(); 
+                                console.log("Some Error Occured");
+                            }
+                        });
+                    });
+		function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profileimg')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    } 
+		</script>
+
+
+</body></html>
+		

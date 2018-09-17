@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+			$(".loader").fadeOut("slow");
+		});
+	</script>
+	<style>
+		.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://www.gte.travel/images/upload//Loading/Preloader_2.gif?r=13/09/2017') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+	</style>
+</head>
+<body>
+    <div id="app">
+        <div class="loader"></div>
+        <div class="panel panel-left panel-reveal">
+            <div class="block">
+                <div class="side-menu" id="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a class="panel-close" id="dashboard"><span><i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard</span></a>
+                        </li>
+						<li class="submenu">
+                            <a href="#" id="equity"><span><i class="fa fa-line-chart" aria-hidden="true"></i>Equities</span> </a>
+                        </li>
+                        <li>
+                            <a class="panel-close" id="mf"><span><i class="fa fa-pie-chart" aria-hidden="true"></i>Mutual Funds</span></a>
+                        </li>
+                        <li>
+                            <a class="panel-close" id="insurance" href=""><span><i class="fa fa-bar-chart" aria-hidden="true"></i>Insurance</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="panel-close" id="fd"><span><i class="fa fa-magnet" aria-hidden="true"></i>Fixed Income Product</span>
+                            </a>
+                        </li>
+							<li class="submenu">
+                            <a id="financial-planning"><span><i class="fa fa-money" aria-hidden="true"></i>Financial Planning</span> </a>
+                        </li>
+						<li class="submenu">
+                            <a id="wealth-management"><span><i class="fa fa-home" aria-hidden="true"></i>Wealth Management</span> </a>
+                        </li>
+						<li class="submenu">
+                            <a id="itr"><span><i class="fa fa-file" aria-hidden="true"></i>ITR</span> </a>
+                        </li>
+						<li class="submenu">
+                            <a id="sip"><span><i class="fa fa-calculator" aria-hidden="true"></i>SIP calculator</span> <!----></a>
+                        </li>
+						<li class="submenu">
+                            <a href="#" id="profile"><span><i class="fa fa-user" aria-hidden="true"></i>Profile</span> <!----></a>
+                        </li>
+						<li class="submenu">
+                            <a id="disclaimer"><span><i class="fa fa-info" aria-hidden="true"></i>Disclaimer</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="view view-main view-init" data-url="/">
+            <div class="page" data-name="index">
+                <div class="navbar two-action no-hairline">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="#" class="link icon-only panel-open" data-panel="left"><i class="fa fa-bars">&nbsp;</i></a>
+                        </div>
+                        <div class="sliding title">Fixed Income Product</div>
+                        <div class="right">
+                            <a id="notification" class="link icon-only"><i class="fa fa-bell">&nbsp;</i></a>
+                            <a href="#" data-popover=".main-menu" class="link icon-only popover-open"><i class="fa fa-ellipsis-v">&nbsp;</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="popover main-menu">
+                    <div class="popover-angle"></div>
+                    <div class="popover-inner">
+                        <div class="list">
+                            <ul>
+                               <li><a href="#" id="name" class="list-button item-link popover-close">Name</a></li>
+							   <li><a href="#" id="email" class="list-button item-link popover-close">Email</a></li>
+							   <li><a href="#" id="mobile" class="list-button item-link popover-close">Mobile</a></li>
+							   <li><a href="#" id="password_change" class="list-button item-link popover-close">Password Change</a></li>
+							   <li><a href="#" id="logout" class="list-button item-link popover-close">Logout</a></li>
+							   <li><a href="#" id="support" class="list-button item-link popover-close">Support</a></li>
+							   <li><a href="#" id="query" class="list-button item-link popover-close">Query</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="page-content inn-page">
+				 <div class="block">
+                      <div class="list no-hairlines media-list inv-list">
+						<!--<ul class="l-bg">
+							<li class="swipeout">
+								<a href="#." class="item-link item-content swipeout-content">
+									<div class="item-inner">
+										<div class="item-title-row">
+											<div class="item-title md">Equity Value</div>
+											<div class="float-right item-title md">2,50,000</div>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>-->
+					<div class="mr25"></div>
+					
+                    <div class="toolbar tabbar toolbar-border">
+					<div class="toolbar-inner">
+							<a href="#fixed-deposit" class="tab-link tab-link-active">FD</a>
+							<a href="#bond" class="tab-link">Bonds</a>
+							<a href="#ncd" class="tab-link">NCD</a>
+						</div>
+					</div>
+					
+					<div class="tabs">
+					<div class="tab tab-active" id="fixed-deposit">
+					
+					</div>
+					
+					<div class="tab" id="bond">
+					</div>
+					 
+					 <div class="tab" id="ncd">
+					 </div>
+					</div>
+				   
+				   </div>
+				 </div>	
+		
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#name").html(localStorage.getItem("txt_name"));
+		$("#email").html(localStorage.getItem("txt_email"));
+		$("#mobile").html(+localStorage.getItem("txt_phone"));
+		$("#support").click(function(){
+			window.open('tel:07522898884');
+		});
+		$("#dashboard").click(function(){
+            window.location.href='dashboard.html';
+        });
+        $("#logout").click(function(){
+            window.location.href='logout.html';
+        });
+        
+        $("#notification").click(function(){
+            window.location.href='notification.html';
+        });
+        
+        $("#profile").click(function(){
+            window.location.href='profile.html';
+        });
+        
+        $("#equity").click(function(){
+            window.location.href='equity-new.html';
+        });
+        
+        $("#dashboard").click(function(){
+            window.location.href='dashboard.html';
+        });
+        
+        $("#insurance").click(function(){
+            window.location.href='insurance.html';
+        });
+			
+		$("#wealth-management").click(function(){
+            window.location.href='wealth-management.html';
+        });
+        
+		$("#itr").click(function(){
+            window.location.href='itr.html';
+        });
+		
+		$("#fd").click(function(){
+            window.location.href='fixed-deposit.html';
+        });
+		
+		$("#mf").click(function(){
+            alert('Feature is under Construction');
+        });
+		
+		$("#financial-planning").click(function(){
+            window.location.href='financial-planning.html';
+        });
+		
+        $("#password_change").click(function(){
+            window.location.href='change_existing_password.html';
+        });
+		
+		$("#disclaimer").click(function(){
+            window.location.href='disclaimer.html';
+        });
+		
+		$("#query").click(function(){
+            window.location.href='query.html';
+        });
+		
+		$("#sip").click(function(){
+            window.location.href='sip.html';
+        });
+	});
+	</script>
+		<script>
+			  var auth_key=localStorage.getItem("txt_auth_key");
+			  var client_id=localStorage.getItem("int_unique_id");
+			  $.ajax({
+			  type: "POST",
+			  url: apiUrl+"Apis/getFD",
+			  data: 
+			  {
+				'auth_key':auth_key,
+				'client_id':client_id
+			  },
+              success:function(data)
+              {
+				var obj2=JSON.parse(data);
+				if(obj2.data.FD.length!=0)
+				{				
+					for (i=0;i<obj2.data.FD.length;i++) 
+					{  
+						if(obj2.data.FD[i].txt_mode_of_compounding==1){
+						var compounding='Yearly';}
+						else{var compounding='Half-Yearly';}
+						var fd = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>'+obj2.data.FD[i].txt_scheme_name+'</h3>'
+						+'<div class="block-small fl-width">'
+						+'<div class="contone">'
+							+'<h4>Invested Value</h4>'
+							+'<h5>'+obj2.data.FD[i].txt_investment_amt+'</h5>'
+							+'<h4>FD Folio No</h4>'
+							+'<h5>'+obj2.data.FD[i].txt_folio_fd_number+'</h5>'
+							+'<h4>FD Name</h4>'
+							+'<h5>'+obj2.data.FD[i].txt_scheme_name+'</h5>'
+							+'<h4>Mode of compounding</h4>'
+							+'<h5>'+compounding+'</h5>'
+							+'<h4>Maturity Rate</h4>'
+							+'<h5>'+obj2.data.FD[i].txt_interest_rate+'</h5>'
+							+'<h4>Maturity Value</h4>'
+							+'<h5>'+obj2.data.FD[i].txt_maturity_amount+'</h5>'
+						+'</div>'
+						+'</div>'
+						+'<div class="pd10"></div>'
+						+'</li>'
+					+'</ul>');
+						 $('#fixed-deposit').append(fd);
+					}
+				}
+				else
+				{
+						var fd = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>NO RECORD FOUND</h3>'
+						+'</li>'
+					+'</ul>');
+						$('#fixed-deposit').append(fd);
+				}
+				
+				if(obj2.data.BOND.length!=0)
+				{				
+					for (i=0;i<obj2.data.BOND.length;i++) 
+					{  
+						if(obj2.data.BOND[i].txt_mode_of_compounding==1){
+						var compounding='Yearly';}
+						else{var compounding='Half-Yearly';}
+						var bond = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>'+obj2.data.BOND[i].txt_scheme_name+'</h3>'
+						+'<div class="block-small fl-width">'
+						+'<div class="contone">'
+							+'<h4>Invested Value</h4>'
+							+'<h5>'+obj2.data.BOND[i].txt_investment_amt+'</h5>'
+							+'<h4>FD Folio No</h4>'
+							+'<h5>'+obj2.data.BOND[i].txt_folio_fd_number+'</h5>'
+							+'<h4>FD Name</h4>'
+							+'<h5>'+obj2.data.BOND[i].txt_scheme_name+'</h5>'
+							+'<h4>Mode of compounding</h4>'
+							+'<h5>'+compounding+'</h5>'
+							+'<h4>Maturity Rate</h4>'
+							+'<h5>'+obj2.data.BOND[i].txt_interest_rate+'</h5>'
+							+'<h4>Maturity Value</h4>'
+							+'<h5>'+obj2.data.BOND[i].txt_maturity_amount+'</h5>'
+						+'</div>'
+						+'</div>'
+						+'<div class="pd10"></div>'
+						+'</li>'
+					+'</ul>');
+						 $('#bond').append(bond);
+					}
+				}
+				else
+				{
+						var bond = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>NO RECORD FOUND</h3>'
+						+'</li>'
+					+'</ul>');
+						$('#bond').append(bond);
+				}
+				
+				if(obj2.data.NCD.length!=0)
+				{				
+					for (i=0;i<obj2.data.NCD.length;i++) 
+					{  
+						if(obj2.data.NCD[i].txt_mode_of_compounding==1){
+						var compounding='Yearly';}
+						else{var compounding='Half-Yearly';}
+						var ncd = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>'+obj2.data.NCD[i].txt_scheme_name+'</h3>'
+						+'<div class="block-small fl-width">'
+						+'<div class="contone">'
+							+'<h4>Invested Value</h4>'
+							+'<h5>'+obj2.data.NCD[i].txt_investment_amt+'</h5>'
+							+'<h4>FD Folio No</h4>'
+							+'<h5>'+obj2.data.NCD[i].txt_folio_fd_number+'</h5>'
+							+'<h4>FD Name</h4>'
+							+'<h5>'+obj2.data.NCD[i].txt_scheme_name+'</h5>'
+							+'<h4>Mode of compounding</h4>'
+							+'<h5>'+compounding+'</h5>'
+							+'<h4>Maturity Rate</h4>'
+							+'<h5>'+obj2.data.NCD[i].txt_interest_rate+'</h5>'
+							+'<h4>Maturity Value</h4>'
+							+'<h5>'+obj2.data.NCD[i].txt_maturity_amount+'</h5>'
+						+'</div>'
+						+'</div>'
+						+'<div class="pd10"></div>'
+						+'</li>'
+					+'</ul>');
+						 $('#ncd').append(ncd);
+					}
+				}
+				else
+				{
+						var ncd = $('<ul class="l-bg wlmgnt fd">'
+						+'<li class="inn-list">'
+						+'<h3>NO RECORD FOUND</h3>'
+						+'</li>'
+					+'</ul>');
+						$('#ncd').append(ncd);
+				}
+              },
+			   error: function(result) {
+                    console.log("Some Error Occured");
+                  }
+			  }); 
+        </script>
+</body>
+
+</html>

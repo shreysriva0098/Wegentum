@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="ios device-pixel-ratio-1 device-desktop support-position-sticky">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<style>
+		.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://www.gte.travel/images/upload//Loading/Preloader_2.gif?r=13/09/2017') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+	</style>
+    <style type="text/css">
+        #btn-login:hover {
+            background: linear-gradient(to bottom, #135479 0%,#33a4ee 100%);
+        }
+    </style>
+</head>
+
+<body onload="onLoad()">
+    <div id="app" class="framework7-root">
+<div class="view view-main view-init" data-url="/">
+           <div class="page no-navbar no-toolbar no-swipeback login-page" data-name="login">
+	<div class="page-content landing-page">
+	<img src="assets/img/lp.jpg" alt="">
+		<div class="account-page">
+			<div class="account-inner">
+				<div class="account-center">
+					<div class="account-content p-20">
+						<div class="account-title">
+							<h2>Welcome to <span class="cf-pan"><a id="contact"><img src="assets/img/contact.png"></a><a id="faq"><img src="assets/img/faq.png"></a></span></h2>
+							<h1>Wegentum <span class="white">Sight</span></h1>						
+							</div>
+						<div class="account-form">
+						<h3>Sign <span class="white">In</span></h3>
+							<form id="login_form">
+								<div class="input-list">
+									<input type="text" placeholder="Username" name="username" id="username">
+								</div>
+								<div class="input-list">
+									<input type="password" placeholder="Password" name="password" id="password">
+								</div>
+								<div class="input-list btn-submit">
+									<input type="button" value="Login" id="btn-login">
+								</div>						
+							</form>	
+							<ul class="lp-act">
+								<li><a href="" id="walkthrough">About Us</a></li>
+								<li style="padding-left: 2px;" class="active"><a href="">Login</a></li>
+								<li><a href="" id="forget_password">Password</a></li>
+							</ul>
+							<div class="rao-btn text-align-center"><a href="#." id="new_client" class="bl-gr">Request Account Opening</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/Chart.bundle.js"></script>
+    <script type="text/javascript" src="assets/js/routes.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+
+
+<script>
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown() {
+    navigator.app.exitApp();
+}
+
+function onLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+function onDeviceReady() {
+	var push = PushNotification.init({ "android": {"senderID": "325843566220"}});
+    push.on('registration', function(data) {
+	$.ajax({
+            type: "POST",
+            url: apiUrl+"Apis/addNewRegistration",
+            data: {
+                    registrationId:data.registrationId
+                  },
+                    datatype: "json",
+                    crossDomain: true,
+                    success: function(result) {
+						//alert(result);
+                    },
+                    error: function(result) {
+                           alert("Some Problem Occured");
+                    }
+        });
+	});
+   // Add similar listeners for other events
+}
+           $(document).ready(function(){
+               var prev_secret=localStorage.getItem("secret");
+               var lockpattern=localStorage.getItem("lockpattern");
+               if(prev_secret && lockpattern)
+               {
+                    window.location.href = 'check_passcode.html';
+               }
+			   else if(prev_secret && lockpattern=='')
+			   {
+                    window.location.href = 'passcode.html';
+               }
+			   if(prev_secret)
+               {
+                    //window.location.href = 'dashboard.html';
+					window.location.href = 'passcode.html';
+               }
+
+
+			   $("#new_client").click(function() {
+					window.location.href = 'add_new_client.html';
+			   });
+			   
+			   $("#forget_password").click(function() {
+					window.location.href = 'verify_otp.html';
+			   })
+               $("#btn-login").click(function() {
+                        if ($("#username").val() == "") {
+                            $("#username_error").html("Please Enter Username");
+                            $("#username").focus();
+                            return false;
+                        } else {
+                            $("#username_error").html("");
+                        }
+
+                        if ($("#password").val() == "") {
+                            $("#password_error").html("Please Enter Password");
+                            $("#password").focus();
+                            return false;
+                        } else {
+                            $("#password_error").html("");
+                        }
+                        
+						$(".loader").fadeOut("slow");
+                        $.ajax({
+                            type: "POST",
+                            url: apiUrl+"Apis/device_login",
+                            data: $('#login_form').serialize(),
+                            datatype: "json",
+                            crossDomain: true,
+                            success: function(result) {
+							$(".loader").fadeOut("slow");
+                                var obj = $.parseJSON(result);
+                                $("#form_error").html("");
+								if (obj.msg==='Success')
+                                {
+									localStorage.setItem("secret", obj.data.txt_auth_key);
+                                    localStorage.setItem("txt_name", obj.data.txt_name);
+                                    localStorage.setItem("txt_email", obj.data.txt_email);
+                                    localStorage.setItem("txt_phone", obj.data.txt_mobile);
+									localStorage.setItem("int_unique_id", obj.data.int_unique_id);
+									localStorage.setItem("txt_auth_key", obj.data.txt_auth_key);
+									
+                                    var push = PushNotification.init({ "android": {"senderID": "325843566220"}});
+                                    push.on('registration', function(data) {
+                                        
+                                        $.ajax({
+                                            type: "POST",
+                                            url: apiUrl+"Apis/getRegistration",
+                                            data: {
+                                                client_id:obj.data.int_unique_id,
+                                                auth_key:obj.data.txt_auth_key,
+                                                registrationId:data.registrationId
+                                            },
+                                            datatype: "json",
+                                            crossDomain: true,
+                                            success: function(result) {
+                                                window.location.href = 'passcode.html';
+												//window.location.href = 'dashboard.html';
+                                                //$(".loader").hide();
+                                            },
+                                            error: function(result) {
+                                                //alert("Some Problem Occured");
+                                            }
+                                        });
+
+                                    });
+
+                                }
+                                else
+                                {
+                                    alert("Login Failed");
+                                    $("#form_error").html(obj.error);
+                                }
+                            },
+                            error: function(result) {
+								$(".loader").fadeOut("slow");
+                                //alert("Some Error Occured");
+                            }
+                        });
+
+                    });
+            $("#walkthrough").click(function(){
+                window.location.href='walkthrough.html';
+            });
+			
+			$("#faq").click(function(){
+                window.location.href='faq.html';
+            });
+			
+			$("#contact").click(function(){
+                window.location.href='contact.html';
+            });
+			
+			$("#sip").click(function(){
+                window.location.href='sip.html';
+            });
+         });
+        </script>
+
+
+</body></html>
+	

@@ -1,0 +1,45 @@
+
+<!doctype html>
+
+<html>
+
+	<head>
+		<script src="cordova.js"></script>
+		
+		<title>Wegentum :: Client Login</title>
+
+		<script src="assets/jquery/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
+
+
+		<script>
+			$(document).ready(function(){
+			   var prev_secret=localStorage.getItem("secret");
+			   //var logged_out=localStorage.getItem("logged_out");
+			   var lockpattern=localStorage.getItem("lockpattern");
+               if(prev_secret && lockpattern){
+                    window.location.href = 'check_passcode.html';
+               }else if(prev_secret && lockpattern ==''){
+               		window.location.href = 'passcode.html';
+               }
+			   else if(!prev_secret)
+			   {
+					window.location.href = 'main.html';
+			   }
+			   else
+			   {
+               		//window.location='./walkthrough.html';
+					window.location='dashboard.html';
+               }
+           });
+			
+
+		</script>
+
+	<body>		
+
+	</body>
+
+</html>

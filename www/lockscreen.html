@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="applock/patternLock.css"  rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="container" class="container" style="background-image: url('applock/lock.jpg');background-repeat: no-repeat;background-size: 100% 100%;">      
+    <div class="mhn-lock-wrap">
+        <div class="mhn-lock-title" style="position: absolute;top: 15%;font-size: 25px;left: 15%;color: #fff;">
+            Draw a pattern to set lock
+        </div>            
+    </div>
+    <div id="patternContainer" style="width:100% !important;height:100% !important;    top: 20%;"></div>
+   </div> 
+</body>
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="applock/patternLock.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        var page_height=$(window).height();
+        var page_width=$(window).width();
+        var final_width=((page_width*100)/100);
+        var final_height=((page_height*100)/100);
+        $("#container").css("width",final_width);
+        $("#container").css("height",final_height);
+        var pattern='';
+        var lock = new PatternLock("#patternContainer",{allowRepeat : true,margin:40,radius:20, onDraw:function(pattern){
+            lock.reset();
+            //alert(pattern.length);
+            if(pattern.length > 1){
+                var com=confirm("Do u wish to continue");
+                if(com){
+                    localStorage.setItem("lockpattern", pattern);  
+                    window.location="dashboard.html";
+                }else{
+                    alert("Please redraw pattern");
+                }
+            }else{
+                alert("Please select a pattern");
+            }
+        }});
+    });
+</script>
+</html>

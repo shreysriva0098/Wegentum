@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="ios device-pixel-ratio-1 device-desktop support-position-sticky">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#3a57c4">
+    <title>Wegentum Sight</title>
+    <link rel="stylesheet" href="assets/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<script></script>
+<style>
+.loader {
+    top:50%;
+    right:45%;
+    position:fixed;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    z-index: 999;
+    overflow: hidden;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+</head>
+
+<body>
+    <div id="app" class="framework7-root">
+<div class="view view-main view-init" data-url="/">
+           <div class="page no-navbar no-toolbar no-swipeback login-page" data-name="login">
+	<div class="page-content landing-page">
+	<img src="assets/img/lp.jpg" alt="">
+		<div class="account-page">
+			<div class="account-inner">
+				<div class="account-center">
+					<div class="account-content p-20">
+						<div class="account-title">
+							<h2>Welcome to</h2>
+							<h1>Wegentum <span class="white">Sight</span></h1>						
+							</div>
+						<div class="account-form">
+						<h3>Reset <span class="white">Password</span></h3>
+							<form>
+								<div class="input-list">
+									<input type="text" placeholder="Enter Registered Number" name="contact" id="contact">
+									<input type="text" placeholder="Enter OTP" name="otp" id="otp" style="display:none;">
+								</div>
+								<div class="input-list btn-submit">
+									<input type="button" value="Next" id="next">
+									<input type="button" value="Resend" id="resend_otp" style="display:none;">
+								</div>						
+							</form>
+							<ul class="lp-act">
+								<li><a href="" id="walkthrough">About Us</a></li>
+								<li style="padding-left: 2px;"><a id="login">Login</a></li>
+								<li class="active"><a>Password</a></li>
+							</ul>
+							<div class="rao-btn text-align-center"><a href="#." id="new_client" class="bl-gr">Request Account Opening</a></div>
+							<div class="loader" style="Display:none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+        </div>
+    </div>
+	
+    <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/framework7.min.js"></script>
+    <script type="text/javascript" src="assets/js/Chart.bundle.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notification.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="assets/js/api_conf.js"></script>
+
+				<script>	
+				$("#new_client").click(function() {
+					window.location.href = 'add_new_client.html';
+			   });				
+			 $("#next").click(function() {
+			 $('.loader').show();
+			 setTimeout(function() {
+			 $('.loader').fadeOut('fast');
+			 }, 2000);
+              $.ajax({  
+              type:'POST',
+              url: apiUrl+"Apis/verifyUserNumber",
+              data:{
+                        'phone':$("#contact").val()
+                   },
+              success:function(data)
+              {
+					var obj1=JSON.parse(data);
+                    if(obj1.msg=='Success')
+                    {
+						localStorage.setItem("client_id", obj1.data.int_unique_id);
+                        $("#contact").hide();
+                        $("#next").hide();
+                        $("#otp").show();
+                        $("#resend_otp").show();
+                    }
+                    else if(obj1.msg=='The phone number is not registered')
+                    {
+                        alert('The phone number is not registered');
+                    }
+                    else if(obj1.msg=='Phone Number is Missing')
+                    {
+                        alert('Phone Number is Missing');
+                    }
+              },
+              error:function(data)
+              {
+                    alert('There Is Some Error');
+              },
+       });
+    });
+
+	$("#otp").keyup(function() {
+    if($(this).val().toString().length==5){
+              $.ajax({  
+              type:'POST',
+              url: apiUrl+"Apis/verifyOtp",
+              data:{
+                        'otp':$(this).val(),
+						'client_id':localStorage.getItem("client_id")
+                   },
+              success:function(data)
+              {
+			  var obj1=JSON.parse(data);
+                    if(obj1.msg=='Success')
+                    {
+                       alert('Verified');
+                       window.location.href = 'changepassword.html';            
+                    }
+                    else 
+                    {
+                        alert('Invalid OTP');
+                    }
+              },
+              error:function(data)
+              {
+                    alert('cl');
+              },
+       });
+      }
+    });
+
+  $("#resend_otp").click(function() {
+              $.ajax({  
+              type:'POST',
+              url: apiUrl+"Apis/verifyUserNumber",
+              data:{
+                        'phone':$("#contact").val()
+                   },
+              success:function(data)
+              {
+                    if(data=='Sent')
+                    {
+                        $("#contact").hide();
+                        $("#next").hide();
+                        $("#otp").show();
+                        $("#resend_otp").show();
+                    }
+                    else if(data=='Not Sent')
+                    {
+                        alert('OTP not sent');
+                    }
+                    else if(data=='Absent')
+                    {
+                        alert('Number is not registered');
+                    }
+              },
+              error:function(data)
+              {
+                    alert('cl');
+              },
+       });
+    });	 
+
+$("#login").click(function() {
+	window.location.href = 'main.html';            
+});
+
+  $("#walkthrough").click(function(){
+                window.location.href='walkthrough.html';
+            });
+		   
+</script>
+	</body>
+</html>
